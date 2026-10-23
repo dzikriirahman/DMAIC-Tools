@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f4f6fb">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="DMAIC">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>DMAIC — Process Excellence</title>
+<link rel="stylesheet" href="tools.css">
+<style>
+:root{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;color:#182033;background:#f4f6fb;font-synthesis:none}
+*{box-sizing:border-box}body{margin:0;background:#f4f6fb}button,input,textarea,select{font:inherit}
+.app{max-width:980px;margin:auto;min-height:100vh;padding:env(safe-area-inset-top) 16px calc(92px + env(safe-area-inset-bottom))}
+header{padding:20px 2px 14px;display:flex;justify-content:space-between;align-items:center}
+.brand{font-size:12px;letter-spacing:1.7px;font-weight:800;color:#68738a}.brand b{color:#2463eb}
+h1{font-size:30px;letter-spacing:-1.1px;margin:4px 0;font-weight:800}.sub{color:#7b8497;font-size:13px}
+.iconbtn{border:0;background:white;border-radius:15px;width:44px;height:44px;box-shadow:0 4px 14px #1b2b4b0c;font-size:19px}
+.hero{background:linear-gradient(120deg,#152b59,#2463eb);color:white;padding:22px;border-radius:25px;box-shadow:0 12px 30px #244f9b28}
+.hero small{opacity:.75;font-weight:700;letter-spacing:1.2px}.hero h2{font-size:25px;margin:8px 0}.hero p{font-size:13px;line-height:1.5;opacity:.82;margin:0 0 18px}
+.progressline{height:7px;background:#ffffff35;border-radius:10px;overflow:hidden}.progressline span{display:block;height:100%;background:#7ef0d1;width:0%;border-radius:10px}
+.herofoot{display:flex;justify-content:space-between;margin-top:10px;font-size:12px;opacity:.9}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:15px 0}
+.stat,.panel{background:white;border:1px solid #e9edf5;border-radius:20px;padding:15px;box-shadow:0 5px 18px #1b2b4b08}
+.stat strong{font-size:23px;display:block;letter-spacing:-.7px}.stat span{font-size:11px;color:#818a9b}
+.sectionhead{display:flex;justify-content:space-between;align-items:center;margin:22px 2px 11px}.sectionhead h3{margin:0;font-size:17px}.muted{font-size:12px;color:#8791a3}
+.stages{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.stage{border:1px solid #e8ecf4;background:white;border-radius:17px;padding:12px 7px;text-align:center;cursor:pointer;min-width:0}
+.stage .num{width:29px;height:29px;border-radius:10px;color:white;display:grid;place-items:center;margin:0 auto 8px;font-size:12px;font-weight:800}
+.stage b{font-size:11px;display:block}.stage small{font-size:9px;color:#929bad}
+.stage.active{outline:2px solid #2463eb;background:#f0f5ff}
+.stage.done:after{content:"✓";display:block;color:#16a47a;font-size:12px;margin-top:4px}
+.panel{margin-top:14px;padding:17px}.paneltop{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}
+.paneltop h3{margin:0;font-size:18px}.pill{font-size:10px;font-weight:800;padding:6px 9px;border-radius:20px;background:#eef3ff;color:#2463eb}
+label{display:block;font-size:12px;font-weight:700;color:#566176;margin:13px 0 6px}
+input,textarea,select{width:100%;border:1px solid #e2e7f0;background:#f9faff;border-radius:12px;padding:12px;color:#1c263a;outline:none}
+textarea{min-height:78px;resize:vertical}input:focus,textarea:focus,select:focus{border-color:#4d7df0;box-shadow:0 0 0 3px #2463eb16}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{border:0;border-radius:13px;padding:12px 15px;font-weight:750;font-size:13px;cursor:pointer}
+.primary{background:#2463eb;color:white}.secondary{background:#edf2ff;color:#2456b5}.ghost{background:#f2f4f8;color:#5d687d}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.itemlist{display:grid;gap:8px}.item{padding:12px;border-radius:13px;background:#f6f8fc;display:flex;justify-content:space-between;gap:10px;font-size:13px}
+.item button{border:0;background:transparent;color:#dc5262;font-size:17px}
+.barwrap{display:grid;gap:10px}.barrow{display:grid;grid-template-columns:78px 1fr 36px;gap:8px;align-items:center;font-size:11px;color:#68738a}.bar{height:9px;background:#edf0f6;border-radius:8px;overflow:hidden}.bar i{display:block;height:100%;border-radius:8px}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:#ffffffed;backdrop-filter:blur(18px);border-top:1px solid #e6eaf1;padding:9px 14px calc(9px + env(safe-area-inset-bottom));display:flex;justify-content:center;z-index:5}
+.nav{width:min(600px,100%);display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.nav button{border:0;background:transparent;color:#8791a3;padding:7px 2px;font-size:10px;font-weight:700}.nav button span{display:block;font-size:19px;margin-bottom:3px}.nav button.active{color:#2463eb}
+.hidden{display:none!important}.hint{font-size:11px;color:#8a94a6;line-height:1.5}.empty{padding:22px;text-align:center;color:#8993a5;font-size:13px}
+@media(min-width:700px){.app{padding-left:28px;padding-right:28px}.stage{padding:16px}.stage b{font-size:13px}.stage small{font-size:11px}.panel{padding:22px}}
+@media(max-width:390px){.stages{gap:5px}.stage{padding:10px 3px}.stage b{font-size:10px}.stage small{font-size:8px}.stats{gap:7px}.stat{padding:12px}.stat strong{font-size:20px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header><div><div class="brand">PROCESS <b>EXCELLENCE</b></div><h1>DMAIC Workspace</h1><div class="sub">Continuous improvement, one step at a time.</div></div><button class="iconbtn" id="settingsBtn" aria-label="Pengaturan">⚙︎</button></header>
+<section class="hero"><small>PROJECT OVERVIEW</small><h2 id="heroTitle">My Improvement Project</h2><p id="heroDesc">Kelola inisiatif perbaikan proses menggunakan metodologi DMAIC.</p><div class="progressline"><span id="progressFill"></span></div><div class="herofoot"><span id="progressText">0 dari 5 tahap selesai</span><b id="progressPct">0%</b></div></section>
+<div class="stats"><div class="stat"><strong id="statProjects">1</strong><span>Project aktif</span></div><div class="stat"><strong id="statTasks">0</strong><span>Aktivitas tercatat</span></div><div class="stat"><strong id="statDone">0%</strong><span>Progres DMAIC</span></div></div>
+<div class="sectionhead" id="journeyHead"><h3>DMAIC Journey</h3><span class="muted">5 tahapan</span></div>
+<div class="stages" id="stageNav"></div>
+<section class="panel" id="stagePanel"></section>
+<section class="panel" id="dashboardPanel"><div class="paneltop"><h3>Project Insights</h3><span class="pill">LIVE LOCAL DATA</span></div><div class="barwrap" id="insights"></div><p class="hint">Grafik progres dihitung dari kelengkapan data pada setiap tahap.</p></section>
+<section class="panel hidden" id="toolsPanel"></section>
+<section class="panel hidden" id="settingsPanel"><div class="paneltop"><h3>Pengaturan & Data</h3><span class="pill">ON DEVICE</span></div><label>Nama project</label><input id="projectName" placeholder="Contoh: Mengurangi defect produksi"><label>Deskripsi project</label><textarea id="projectDesc" placeholder="Tuliskan tujuan perbaikan..."></textarea><div class="actions"><button class="btn primary" id="saveProject">Simpan project</button><button class="btn secondary" id="exportData">Export JSON</button><button class="btn secondary" id="importBtn">Import JSON</button><input type="file" id="importFile" accept="application/json" class="hidden"></div><p class="hint">Data disimpan di browser perangkat ini (localStorage). Export JSON secara berkala sebagai cadangan. Data belum tersinkron ke perangkat lain.</p></section>
+</div>
+<nav class="bottom"><div class="nav"><button class="active" data-view="home"><span>⌂</span>Overview</button><button data-view="define"><span>◎</span>DMAIC</button><button data-view="insights"><span>▥</span>Insights</button><button data-view="tools"><span>✦</span>Tools</button><button data-view="settings"><span>⚙</span>Data</button></div></nav>
+<script src="tools.js"></script>
+<script>
+const KEY="dmaic_workspace_v1";
+const colors=["#2463eb","#1597d4","#159b72","#ed8a2d","#8556dc"];
+const names=["DEFINE","MEASURE","ANALYZE","IMPROVE","CONTROL"];
+const desc=["Tentukan masalah, kebutuhan pelanggan, tujuan, dan ruang lingkup proyek.","Ukur kondisi saat ini dan tetapkan baseline kinerja proses.","Identifikasi dan verifikasi akar penyebab masalah.","Kembangkan, uji, dan terapkan solusi perbaikan.","Pertahankan hasil melalui standardisasi dan monitoring."];
+const fields=[
+[{k:"problem",l:"Problem statement",p:"Jelaskan masalah secara spesifik..."},{k:"voc",l:"Voice of Customer (VOC)",p:"Apa kebutuhan/keluhan pelanggan?"},{k:"goal",l:"Project goal / target",p:"Target terukur yang ingin dicapai..."},{k:"scope",l:"Project scope",p:"Batasan proses yang termasuk / tidak termasuk..."},{k:"team",l:"Tim & stakeholder",p:"Sponsor, project leader, anggota tim..."}],
+[{k:"metric",l:"CTQ / KPI utama",p:"Metrik yang akan diukur..."},{k:"baseline",l:"Baseline saat ini",p:"Nilai awal + satuan (contoh: defect 8%)"},{k:"target",l:"Target kinerja",p:"Nilai target..."},{k:"method",l:"Metode pengumpulan data",p:"Sumber, frekuensi, sampling..."},{k:"quality",l:"Validasi pengukuran (MSA)",p:"Catatan kalibrasi / konsistensi data..."}],
+[{k:"cause",l:"Potensi akar penyebab",p:"Daftar dugaan penyebab..."},{k:"fivewhy",l:"5 Whys",p:"Mengapa masalah terjadi? Telusuri hingga akar..."},{k:"fishbone",l:"Fishbone (6M)",p:"Man, Machine, Method, Material, Measurement, Environment..."},{k:"evidence",l:"Bukti & validasi",p:"Data yang membuktikan akar penyebab..."},{k:"priority",l:"Prioritas penyebab",p:"Penyebab utama berdasarkan dampak/frekuensi..."}],
+[{k:"solution",l:"Alternatif solusi",p:"Tuliskan alternatif solusi..."},{k:"selection",l:"Solusi terpilih & alasan",p:"Mengapa solusi ini paling tepat?"},{k:"pilot",l:"Rencana uji coba (pilot)",p:"PIC, jadwal, area uji, kriteria sukses..."},{k:"result",l:"Hasil implementasi",p:"Bandingkan kondisi sebelum dan sesudah..."},{k:"risk",l:"Risiko & mitigasi",p:"Risiko penerapan dan tindakan pencegahan..."}],
+[{k:"controlplan",l:"Control plan",p:"Apa yang dikontrol, metode, frekuensi, PIC..."},{k:"standard",l:"Standardisasi / SOP",p:"Dokumen dan prosedur yang diperbarui..."},{k:"monitor",l:"Monitoring KPI",p:"Batas kendali, jadwal review, eskalasi..."},{k:"response",l:"Reaction plan",p:"Tindakan jika KPI keluar dari batas..."},{k:"handover",l:"Handover & lesson learned",p:"PIC pemilik proses dan pembelajaran..."}]
+];
+let state=load(),active=0,view="home";
+function blank(){return {name:"My Improvement Project",description:"Kelola inisiatif perbaikan proses menggunakan metodologi DMAIC.",stages:fields.map(()=>({})),created:new Date().toISOString()}}
+function load(){try{return JSON.parse(localStorage.getItem(KEY))||blank()}catch(e){return blank()}}
+function save(){localStorage.setItem(KEY,JSON.stringify(state));render()}
+function stagePercent(i){let f=fields[i],d=state.stages[i];return Math.round(f.filter(x=>(d[x.k]||"").trim()).length/f.length*100)}
+function complete(i){return stagePercent(i)===100}
+function total(){return Math.round(names.reduce((s,n,i)=>s+stagePercent(i),0)/5)}
+function esc(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function renderNav(){document.getElementById("stageNav").innerHTML=names.map((n,i)=>`<button class="stage ${active===i?"active":""} ${complete(i)?"done":""}" data-stage="${i}"><span class="num" style="background:${colors[i]}">${i+1}</span><b>${n}</b><small>${stagePercent(i)}%</small></button>`).join("");document.querySelectorAll("[data-stage]").forEach(b=>b.onclick=()=>{active=+b.dataset.stage;view="define";render()})}
+function renderStage(){let f=fields[active],d=state.stages[active];document.getElementById("stagePanel").innerHTML=`<div class="paneltop"><div><span class="pill" style="background:${colors[active]}18;color:${colors[active]}">STEP 0${active+1}</span><h3 style="margin:9px 0 4px">${names[active]}</h3><div class="muted">${desc[active]}</div></div><b style="color:${colors[active]}">${stagePercent(active)}%</b></div><div class="grid2">${f.map(x=>`<div style="grid-column:1/-1"><label>${x.l}</label><textarea data-field="${x.k}" placeholder="${x.p.replace(/"/g,"&quot;")}">${esc(d[x.k])}</textarea></div>`).join("")}</div><div class="actions"><button class="btn primary" id="saveStage">Simpan tahap</button><button class="btn secondary" id="prevStage" ${active===0?"disabled":""}>← Sebelumnya</button><button class="btn secondary" id="nextStage" ${active===4?"disabled":""}>Berikutnya →</button></div><p class="hint">Isi seluruh kolom untuk menandai tahap ${names[active]} selesai. Anda dapat menyimpan progres kapan saja.</p>`;
+document.getElementById("saveStage").onclick=()=>{f.forEach(x=>d[x.k]=document.querySelector(`[data-field="${x.k}"]`).value);save();toast("Tahap tersimpan di perangkat ini")};
+document.getElementById("prevStage").onclick=()=>{active--;render()};
+document.getElementById("nextStage").onclick=()=>{f.forEach(x=>d[x.k]=document.querySelector(`[data-field="${x.k}"]`).value);active++;save()};
+}
+function renderInsights(){document.getElementById("insights").innerHTML=names.map((n,i)=>`<div class="barrow"><b>${n}</b><div class="bar"><i style="width:${stagePercent(i)}%;background:${colors[i]}"></i></div><strong>${stagePercent(i)}%</strong></div>`).join("")}
+function render(){document.getElementById("heroTitle").textContent=state.name;document.getElementById("heroDesc").textContent=state.description;let p=total();document.getElementById("progressFill").style.width=p+"%";document.getElementById("progressText").textContent=names.filter((_,i)=>complete(i)).length+" dari 5 tahap selesai";document.getElementById("progressPct").textContent=p+"%";document.getElementById("statDone").textContent=p+"%";document.getElementById("statTasks").textContent=fields.reduce((s,f,i)=>s+f.filter(x=>(state.stages[i][x.k]||"").trim()).length,0);renderNav();renderStage();renderInsights();const tv=view==="tools";["stageNav","journeyHead","stagePanel"].forEach(id=>document.getElementById(id).classList.toggle("hidden",tv));document.getElementById("toolsPanel").classList.toggle("hidden",!tv);if(tv&&window.Tools)Tools.show();document.getElementById("dashboardPanel").classList.toggle("hidden",view==="settings"||tv);document.getElementById("settingsPanel").classList.toggle("hidden",view!=="settings");document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.view===view||b.dataset.view==="home"&&view==="define"));if(view==="settings"){document.getElementById("projectName").value=state.name;document.getElementById("projectDesc").value=state.description}}
+function toast(s){let t=document.createElement("div");t.textContent=s;t.style="position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#182033;color:white;padding:12px 18px;border-radius:20px;font-size:12px;z-index:9";document.body.append(t);setTimeout(()=>t.remove(),1900)}
+document.querySelectorAll(".nav button").forEach(b=>b.onclick=()=>{view=b.dataset.view;if(view==="define")active=0;render();if(view==="define")document.getElementById("stagePanel").scrollIntoView({behavior:"smooth",block:"start"});if(view==="tools")document.getElementById("toolsPanel").scrollIntoView({behavior:"smooth",block:"start"});});
+document.getElementById("settingsBtn").onclick=()=>{view="settings";render();window.scrollTo({top:0,behavior:"smooth"})};
+document.getElementById("saveProject").onclick=()=>{state.name=document.getElementById("projectName").value.trim()||"Untitled Project";state.description=document.getElementById("projectDesc").value.trim();save();toast("Project tersimpan")};
+document.getElementById("exportData").onclick=()=>{let blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="dmaic-backup.json";a.click();URL.revokeObjectURL(a.href)};
+document.getElementById("importBtn").onclick=()=>document.getElementById("importFile").click();
+document.getElementById("importFile").onchange=async e=>{try{let x=JSON.parse(await e.target.files[0].text());if(!x.stages||x.stages.length!==5)throw Error();state=x;save();toast("Data berhasil diimpor")}catch(err){alert("File JSON tidak valid.")}};
+if("serviceWorker" in navigator && location.protocol.startsWith("http"))window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+render();
+</script>
+</body></html>

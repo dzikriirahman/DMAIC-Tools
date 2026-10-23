@@ -1,0 +1,74 @@
+/* Quality Tools — Fishbone, Pareto, 5 Whys, KPI, SPC */
+.ttabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin:0 -2px 14px;-webkit-overflow-scrolling:touch}
+.ttab{border:1px solid #e2e7f0;background:#f6f8fc;color:#5d687d;border-radius:14px;padding:10px 14px;font-weight:750;font-size:13px;white-space:nowrap;cursor:pointer;flex:0 0 auto}
+.ttab.on{background:#2463eb;border-color:#2463eb;color:#fff}
+.toolhead{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.toolhead h4{margin:0 0 3px;font-size:16px}
+.toolhead p{margin:0;font-size:12px;color:#7b8497;line-height:1.5;max-width:560px}
+.mini{border:0;border-radius:11px;padding:8px 11px;font-weight:750;font-size:12px;cursor:pointer;background:#edf2ff;color:#2456b5}
+.mini.warn{background:#fdecee;color:#c23a4b}
+.mini.ghost{background:#f2f4f8;color:#5d687d}
+.row{display:flex;gap:6px;flex-wrap:wrap}
+.scroller{overflow-x:auto;border:1px solid #e9edf5;border-radius:16px;background:#fbfcff;-webkit-overflow-scrolling:touch}
+.scroller svg{display:block;min-width:760px;width:100%;height:auto}
+.scroller.narrow svg{min-width:620px}
+svg text{font-family:inherit}
+.fcause{cursor:pointer}.fcause:hover{text-decoration:underline}
+.catgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-top:12px}
+.catcard{border:1px solid #e9edf5;border-radius:16px;padding:12px;background:#fff}
+.catcard h5{margin:0 0 8px;font-size:13px;display:flex;align-items:center;gap:7px}
+.catcard h5 i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.chips{display:flex;flex-direction:column;gap:5px;margin:8px 0}
+.chip{display:flex;align-items:center;gap:6px;background:#f6f8fc;border-radius:10px;padding:7px 9px;font-size:12px;line-height:1.35}
+.chip span{flex:1;min-width:0;word-break:break-word}
+.chip.root{background:#fdecee;color:#a12a3a;font-weight:700}
+.chip button{border:0;background:transparent;font-size:15px;padding:0 2px;cursor:pointer;color:#9aa3b5}
+.chip button.star.on{color:#dc5262}.chip button.del:hover{color:#dc5262}
+.inline-form{display:flex;gap:6px}.inline-form input{padding:9px 10px;font-size:13px}
+.inline-form button{flex:0 0 auto}
+.tbl{width:100%;border-collapse:collapse;font-size:12px}
+.tbl th{font-size:10px;letter-spacing:.6px;text-transform:uppercase;color:#8791a3;text-align:left;padding:6px 6px;border-bottom:1px solid #e9edf5}
+.tbl td{padding:5px 6px;border-bottom:1px solid #f0f2f7}
+.tbl td input{padding:8px 9px;font-size:13px;border-radius:9px}
+.tbl .r{text-align:right;font-variant-numeric:tabular-nums}
+.tbl tr.vital td{background:#f0f5ff}
+.callout{margin-top:12px;padding:12px 14px;border-radius:14px;background:#eef3ff;color:#27428a;font-size:13px;line-height:1.55}
+.callout.ok{background:#e8f7f1;color:#0f6b4f}.callout.bad{background:#fdecee;color:#a12a3a}.callout.warn{background:#fff4e5;color:#8a5200}
+/* 5 whys */
+.whychain{display:grid;gap:0;margin-top:12px}
+.why{display:grid;grid-template-columns:34px 1fr;gap:10px;position:relative;padding-bottom:12px}
+.why:not(:last-child):before{content:"";position:absolute;left:16px;top:34px;bottom:-2px;width:2px;background:#d6def0}
+.why .n{width:34px;height:34px;border-radius:12px;background:#2463eb;color:#fff;display:grid;place-items:center;font-weight:800;font-size:13px;z-index:1}
+.why.problem .n{background:#dc5262}.why.rootstep .n{background:#159b72}
+.why label{margin:0 0 5px}.why textarea{min-height:56px}
+.whyroot{border:2px dashed #159b72;border-radius:16px;padding:12px 14px;margin-top:6px;background:#f2fbf7}
+/* KPI */
+.kpisum{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:6px 0 12px}
+.kpisum div{background:#f6f8fc;border-radius:14px;padding:11px 12px}
+.kpisum b{display:block;font-size:21px;letter-spacing:-.6px}.kpisum span{font-size:10.5px;color:#818a9b}
+.kpigrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:10px}
+.kpi{border:1px solid #e9edf5;border-radius:18px;padding:14px;background:#fff;box-shadow:0 4px 14px #1b2b4b08}
+.kpi .top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.kpi h5{margin:0;font-size:13px;color:#566176;line-height:1.3}
+.kpi .val{font-size:30px;font-weight:800;letter-spacing:-1px;margin:6px 0 2px}.kpi .val small{font-size:13px;font-weight:700;color:#8791a3;letter-spacing:0}
+.badge{font-size:10px;font-weight:800;padding:4px 8px;border-radius:20px;white-space:nowrap}
+.badge.good{background:#e1f6ee;color:#0f7a58}.badge.ok{background:#e6f0ff;color:#2456b5}.badge.risk{background:#fff0dc;color:#a45a00}.badge.bad{background:#fde6e9;color:#b42d3d}.badge.na{background:#eef0f4;color:#7b8497}
+.pbar{height:8px;background:#edf0f6;border-radius:8px;overflow:hidden;margin:10px 0 5px}.pbar i{display:block;height:100%;border-radius:8px}
+.kmeta{display:flex;justify-content:space-between;font-size:11px;color:#8791a3}
+.kedit{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
+.kedit label{margin:0 0 3px;font-size:10px}.kedit input{padding:7px 9px;font-size:12px;border-radius:9px}
+.krec{display:flex;gap:6px;margin-top:10px}.krec input{padding:9px 10px;font-size:13px}
+.delta{font-size:11px;font-weight:700}.delta.good{color:#0f7a58}.delta.bad{color:#b42d3d}
+.addbox{border:1px dashed #cdd6e8;border-radius:16px;padding:12px;margin-top:12px;background:#fbfcff}
+.addbox .g{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px}
+/* SPC */
+.spcctl{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:10px 0}
+.spcctl label{margin:0 0 4px}
+.spcnums{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin:12px 0}
+.spcnums div{background:#f6f8fc;border-radius:12px;padding:10px 12px}.spcnums b{display:block;font-size:17px;font-variant-numeric:tabular-nums}.spcnums span{font-size:10.5px;color:#818a9b}
+.charttitle{font-size:12px;font-weight:800;color:#566176;margin:14px 2px 6px}
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:11px;color:#7b8497;margin:8px 2px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+.viol{margin:8px 0 0;padding:0;list-style:none;font-size:12px;display:grid;gap:5px}
+.viol li{background:#fdecee;color:#a12a3a;border-radius:10px;padding:7px 10px}
+@media(max-width:560px){.kpisum{grid-template-columns:repeat(2,1fr)}}
